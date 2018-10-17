@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="IRdbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AllPages">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="linkUrl" Type="nvarchar(max)" />
+    <Property Name="mycontent" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="bigram_index">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="K_gram" Type="nvarchar(max)" />
+    <Property Name="Term" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="InvertedIndex">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Term" Type="nvarchar(max)" />
+    <Property Name="docid" Type="int" />
+    <Property Name="Frequency" Type="int" />
+    <Property Name="positions" Type="int" />
+  </EntityType>
+  <EntityType Name="invertedindexcopy">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="term" Type="nvarchar(max)" />
+    <Property Name="docid" Type="int" />
+  </EntityType>
+  <EntityType Name="soundex_index">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Soundex" Type="nvarchar(max)" />
+    <Property Name="Term" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityContainer Name="IRdbModelStoreContainer">
+    <EntitySet Name="AllPages" EntityType="Self.AllPages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="bigram_index" EntityType="Self.bigram_index" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="InvertedIndex" EntityType="Self.InvertedIndex" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="invertedindexcopy" EntityType="Self.invertedindexcopy" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="soundex_index" EntityType="Self.soundex_index" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

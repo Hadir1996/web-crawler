@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="IRdbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AllPages">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="linkUrl" Type="nvarchar(max)" />
+          <Property Name="mycontent" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="bigram_index">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="K_gram" Type="nvarchar(max)" />
+          <Property Name="Term" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="InvertedIndex">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Term" Type="nvarchar(max)" />
+          <Property Name="docid" Type="int" />
+          <Property Name="Frequency" Type="int" />
+          <Property Name="positions" Type="int" />
+        </EntityType>
+        <EntityType Name="invertedindexcopy">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="term" Type="nvarchar(max)" />
+          <Property Name="docid" Type="int" />
+        </EntityType>
+        <EntityType Name="soundex_index">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Soundex" Type="nvarchar(max)" />
+          <Property Name="Term" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityContainer Name="IRdbModelStoreContainer">
+          <EntitySet Name="AllPages" EntityType="Self.AllPages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="bigram_index" EntityType="Self.bigram_index" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InvertedIndex" EntityType="Self.InvertedIndex" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="invertedindexcopy" EntityType="Self.invertedindexcopy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="soundex_index" EntityType="Self.soundex_index" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="IRdbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AllPage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="linkUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="mycontent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="bigram_index">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="K_gram" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Term" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="InvertedIndex">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Term" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="docid" Type="Int32" />
+          <Property Name="Frequency" Type="Int32" />
+          <Property Name="positions" Type="Int32" />
+        </EntityType>
+        <EntityType Name="invertedindexcopy">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="term" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="docid" Type="Int32" />
+        </EntityType>
+        <EntityType Name="soundex_index">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Soundex" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Term" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="IRdbEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AllPages" EntityType="Self.AllPage" />
+          <EntitySet Name="bigram_index" EntityType="Self.bigram_index" />
+          <EntitySet Name="InvertedIndexes" EntityType="Self.InvertedIndex" />
+          <EntitySet Name="invertedindexcopies" EntityType="Self.invertedindexcopy" />
+          <EntitySet Name="soundex_index" EntityType="Self.soundex_index" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="IRdbModelStoreContainer" CdmEntityContainer="IRdbEntities1">
+          <EntitySetMapping Name="AllPages">
+            <EntityTypeMapping TypeName="IRdbModel.AllPage">
+              <MappingFragment StoreEntitySet="AllPages">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="linkUrl" ColumnName="linkUrl" />
+                <ScalarProperty Name="mycontent" ColumnName="mycontent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bigram_index">
+            <EntityTypeMapping TypeName="IRdbModel.bigram_index">
+              <MappingFragment StoreEntitySet="bigram_index">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="K_gram" ColumnName="K_gram" />
+                <ScalarProperty Name="Term" ColumnName="Term" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InvertedIndexes">
+            <EntityTypeMapping TypeName="IRdbModel.InvertedIndex">
+              <MappingFragment StoreEntitySet="InvertedIndex">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Term" ColumnName="Term" />
+                <ScalarProperty Name="docid" ColumnName="docid" />
+                <ScalarProperty Name="Frequency" ColumnName="Frequency" />
+                <ScalarProperty Name="positions" ColumnName="positions" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="invertedindexcopies">
+            <EntityTypeMapping TypeName="IRdbModel.invertedindexcopy">
+              <MappingFragment StoreEntitySet="invertedindexcopy">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="term" ColumnName="term" />
+                <ScalarProperty Name="docid" ColumnName="docid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="soundex_index">
+            <EntityTypeMapping TypeName="IRdbModel.soundex_index">
+              <MappingFragment StoreEntitySet="soundex_index">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Soundex" ColumnName="Soundex" />
+                <ScalarProperty Name="Term" ColumnName="Term" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

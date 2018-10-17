@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="IRdbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AllPage">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="linkUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="mycontent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="bigram_index">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="K_gram" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Term" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="InvertedIndex">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Term" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="docid" Type="Int32" />
+    <Property Name="Frequency" Type="Int32" />
+    <Property Name="positions" Type="Int32" />
+  </EntityType>
+  <EntityType Name="invertedindexcopy">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="term" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="docid" Type="Int32" />
+  </EntityType>
+  <EntityType Name="soundex_index">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Soundex" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Term" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="IRdbEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AllPages" EntityType="Self.AllPage" />
+    <EntitySet Name="bigram_index" EntityType="Self.bigram_index" />
+    <EntitySet Name="InvertedIndexes" EntityType="Self.InvertedIndex" />
+    <EntitySet Name="invertedindexcopies" EntityType="Self.invertedindexcopy" />
+    <EntitySet Name="soundex_index" EntityType="Self.soundex_index" />
+  </EntityContainer>
+</Schema>

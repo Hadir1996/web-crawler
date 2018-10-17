@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="IRdbModelStoreContainer" CdmEntityContainer="IRdbEntities1">
+    <EntitySetMapping Name="AllPages">
+      <EntityTypeMapping TypeName="IRdbModel.AllPage">
+        <MappingFragment StoreEntitySet="AllPages">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="linkUrl" ColumnName="linkUrl" />
+          <ScalarProperty Name="mycontent" ColumnName="mycontent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bigram_index">
+      <EntityTypeMapping TypeName="IRdbModel.bigram_index">
+        <MappingFragment StoreEntitySet="bigram_index">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="K_gram" ColumnName="K_gram" />
+          <ScalarProperty Name="Term" ColumnName="Term" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InvertedIndexes">
+      <EntityTypeMapping TypeName="IRdbModel.InvertedIndex">
+        <MappingFragment StoreEntitySet="InvertedIndex">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Term" ColumnName="Term" />
+          <ScalarProperty Name="docid" ColumnName="docid" />
+          <ScalarProperty Name="Frequency" ColumnName="Frequency" />
+          <ScalarProperty Name="positions" ColumnName="positions" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="invertedindexcopies">
+      <EntityTypeMapping TypeName="IRdbModel.invertedindexcopy">
+        <MappingFragment StoreEntitySet="invertedindexcopy">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="term" ColumnName="term" />
+          <ScalarProperty Name="docid" ColumnName="docid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="soundex_index">
+      <EntityTypeMapping TypeName="IRdbModel.soundex_index">
+        <MappingFragment StoreEntitySet="soundex_index">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Soundex" ColumnName="Soundex" />
+          <ScalarProperty Name="Term" ColumnName="Term" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
